@@ -65,7 +65,7 @@ footer{
 .products{
     display: flex;
     flex-wrap: wrap;
-    list-style: none;
+    list-style-type: none;
     padding: 0;
     margin: 0;
     justify-content: center;
@@ -75,25 +75,29 @@ footer{
     margin: 1rem;
     margin-bottom: 0;
     height: 42rem;
-    border-top: 0.2rem #e0e0e0 solid;
+    border-top: 0.2rem black solid;
 }
 
-product{
+
+.product{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     height: 100%;
 }
-.product{
+
+.product img{
+    justify-items: center;
+    align-items: center;
     max-height: 26rem;
     max-width: 22rem;
     margin-top: 2rem;
 }
 
-.product-name{
+.product-title{
     line-height: 2.2rem;
 }
-.product-brand{
+.product-category{
     font-size: 1.2rem;
     color:#808080;
 }
