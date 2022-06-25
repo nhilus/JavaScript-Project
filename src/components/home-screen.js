@@ -40,28 +40,6 @@ const HomeScreen = {
             `).join('\n')}
         </ul>
         `
-
-        /*
-        return `
-        <ul class="products">
-            ${products
-                .map(
-                    (product) =>`
-                <div class="row">
-                    <div class="col-4">
-                        <img src="${product.image}">
-                        <h4>${product.name}</h4>
-                        <div class="rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star-o"></i>
-                        </div>
-                        <p>${product.price}</p>
-                    </div>
-            `).join('\n')}
-        </ul>`*/
     }
 }
 

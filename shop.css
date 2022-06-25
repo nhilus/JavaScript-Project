@@ -72,11 +72,12 @@ footer{
 }
 .products li{
     flex: 0 1 30rem;
-    margin: 1rem;
+    margin: 2rem;
     margin-bottom: 0;
     height: 42rem;
     border-top: 0.2rem black solid;
 }
+
 
 
 .product{
