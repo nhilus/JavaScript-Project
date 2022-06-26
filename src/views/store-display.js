@@ -8,3 +8,4 @@ const router= async () => {
 };
 
 window.addEventListener("load", router);
+

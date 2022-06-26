@@ -106,3 +106,27 @@ footer{
 .product-price{
     font-size: 2rem;
 }
+
+.components-container{
+    display: flex;
+    justify-content: space-between;
+}
+
+.rating input{
+    display: none;
+}
+
+.rating label{
+    color: blueviolet;
+    transition: all 0.2s ease;
+    float: right;
+}
+
+input::not(:checked) ~ label:hover,
+input::not(:checked) ~ label:hover ~ label{
+    color:aqua;
+}
+
+input:checked ~ label{
+    color:aqua;
+}

@@ -1,23 +1,8 @@
-import Rating from "./rating";
-
-const HomeScreen = {
-    render : async () => {
-        const response = await fetch("https://fakestoreapi.com/products/category/electronics",{
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        });
-        if(!response || !response.ok){
-            return `<div> Error getting data </div>`;
-        }
-
-        const products = await response.json();
-        const rating = Rating;
-        
+/*
+const  Card = {
+    render:(product)=>{
         return `
         <ul class="products">
-            ${products.map((product) =>{
-                return `
                 <li>
                     <div class="product">
                         <a href="/#/product/${product.id}" style="width:100%; text-align:center">
@@ -36,7 +21,7 @@ const HomeScreen = {
                                 ${product.price}€
                             </div>
                             <div class="components-container">
-                                ${rating.render()}
+                                ${product.rating.rate}
                                 <div class="add-to-cart-btn">
                                     <button class="btn btn-primary">Add to cart</button>
                                 </div>
@@ -44,11 +29,12 @@ const HomeScreen = {
                         </div>
                     </div>
                 </li>
-            `}).join('\n')}
+            ).join('\n')}
         </ul>
         `
+
     }
+
 }
 
-export default HomeScreen;
-
+export default Card;*/
