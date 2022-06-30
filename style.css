@@ -95,7 +95,7 @@ body{
 
 /*#region Navbar--------------------------------------------------------------------------------------------------*/
 .navbar{
-  background-color:black;
+  background-color:#08121C;
   grid-area: navbar;
   display: flex;
   justify-content: center;
@@ -218,7 +218,7 @@ font-size: 40px;
 .footer{
   position: sticky;
   text-align: center;
-  background-color: black;
+  background-color: #08121C;
   color: aliceblue;
   padding: 20px;
   grid-area: footer;
@@ -294,8 +294,8 @@ font-size: 40px;
       height: 100vh;
       display: flex;
       flex-direction: column;
-      justify-content: center;
     }
+
 
     /*----------------------------------FOOTER----------------------------------*/
     .floatFooter{
@@ -306,10 +306,6 @@ font-size: 40px;
       display: flex;
       text-align: center;
       justify-content: space-between;
-      background-color: black;
-      color: aliceblue;
-      padding: 20px;
-      grid-area: footer;
     }
     
     .logoFooter{
