@@ -18,9 +18,24 @@
                 <a href="/#/">icon1</a>
                 <a href="/#/">icon2</a>
             </div>
+            
         </header>
-        <main id="main-container">
-        </main>
+        <div class="search-wrapper">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="search" id="search" data-search>
+            <button>Go to Shopping Cart</button>
+        </div>
+        <div class="product-cards" data-products-card-container></div>
+        <template data-product-template>
+            <div class = "card">
+                <div class = "image" data-image></div>
+                <div class = "body" data-body></div>
+                <div class = "rating" id="rating" data-rating></div>
+                <div>
+                    <button class="button">Add to cart</button>
+                </div>
+            </div>
+        </template>
         <footer>
             <div>name 1</div>
             <div>name 2</div>

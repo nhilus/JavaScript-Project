@@ -19,7 +19,7 @@ a:hover {
     color: aqua;
 }
 
-.grid-container{
+/*.grid-container{
     display: grid;
     grid-template-areas: 
     'header'
@@ -28,7 +28,7 @@ a:hover {
     grid-template-columns: 1fr;
     grid-template-rows: 5rem 1fr 5rem;
     height: 100%;
-}
+}*/
 
 header {
     grid-area: header;
@@ -61,7 +61,7 @@ footer{
     color: white;
 }
 /*produxts*/
-
+/*
 .products{
     display: flex;
     flex-wrap: wrap;
@@ -111,7 +111,7 @@ footer{
     display: flex;
     justify-content: space-between;
 }
-
+*/
 .rating input{
     display: none;
 }
@@ -130,3 +130,57 @@ input::not(:checked) ~ label:hover ~ label{
 input:checked ~ label{
     color:aqua;
 }
+
+.search-wrapper{
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: space-around;
+    gap: .25rem;
+}
+
+.product-cards{
+    display:grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px,1fr));
+    gap: .25rem;
+    margin-top: 1rem;
+}
+
+.card{
+    border: 1px solid black;
+    background-color: white;
+    padding:.5rem ;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.card > header {
+    margin-bottom:.25rem ;
+}
+
+.card > body {
+    font-size: .8rem;
+    
+    
+}
+.card > image {
+    justify-items: center;
+    align-items: center;
+    max-height: 26rem;
+    max-width: 22rem;
+    margin-top: 2rem;
+}
+
+
+
+
+
+
+
+.hide{
+    display: none;
+}
+
