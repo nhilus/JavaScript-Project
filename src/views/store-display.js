@@ -8,17 +8,6 @@ let products = [];
 const ratingHtml = Rating.render();
 
 
-//search bar filter function
-
-searchInput.addEventListener("input", (e)=>{ 
-    const value = e.target.value.toLowerCase();
-    products.forEach(product => {
-        const isVisible = product.name?.toLowerCase().includes(value) || product.category?.toLowerCase().includes(value);
-        product.element.classList.toggle("hide", !isVisible);
-   });
-
-});
-
 // turn into api component
 
 async function getData(){
@@ -28,38 +17,47 @@ async function getData(){
         products.push(product);
     })
         localStorage.setItem("productDetails", JSON.stringify(products));
-    };
+};
 
-    
+console.log(products);
 
-    console.log(products);
+    //search bar filter function
+
+searchInput.addEventListener("input", (e)=>{ 
+    const value = e.target.value.toLowerCase();
+    console.log(value)
+    productCards.forEach(product => {
+        const isVisible = product.name?.toLowerCase().includes(value);
+        product.element.toggle("hide", !isVisible);
+    });
+});
 
 // turn into card compopnent
 
-        function renderProducts() {
-            const productcards = JSON.parse(localStorage.getItem("productDetails"));
-        
-            productcards.forEach(product => {
+    function renderProducts() {
+        const productcards = JSON.parse(localStorage.getItem("productDetails"));
+    
+        productcards.forEach(product => {
 
-            const card = productCardTemplate.content.cloneNode(true).children[0];
-            const image = card.querySelector("[data-image]");
-            const body = card.querySelector("[data-body]");
-            const rating = card.querySelector("[data-rating]");
+        const card = productCardTemplate.content.cloneNode(true).children[0];
+        const image = card.querySelector("[data-image]");
+        const body = card.querySelector("[data-body]");
+        const rating = card.querySelector("[data-rating]");
 
-            let productImage = new Image(150, 200);
-            productImage.src = product.image;
-            image.appendChild(productImage);
+        let productImage = new Image(150, 200);
+        productImage.src = product.image;
+        image.appendChild(productImage);
 
-            body.textContent = [product.title,
-                                product.price
-                                ]
-            rating.insertAdjacentHTML("beforebegin", ratingHtml);                
-            productCardContainer.append(card);
+        body.textContent = [product.title,
+                            product.price
+                            ]
+        rating.insertAdjacentHTML("beforebegin", ratingHtml);                
+        productCardContainer.append(card);
 
-            return {title: product.title, 
-                    image: product.image, 
-                    price: product.price,
-                    element: card}
+        return {title: product.title, 
+                image: product.image, 
+                price: product.price,
+                element: card}
         });
     };
 
