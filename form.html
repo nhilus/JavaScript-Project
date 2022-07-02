@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Contact-Form</title>
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
     <meta name="viewport" content="width=, initial-scale=1.0">
 
     <!-- Google Fonts -->
@@ -52,30 +55,35 @@
             <div class="phrase">The Estimation of Successful Distribution</div>
             <div class="phrase">Get In the Game!</div>
          </div>
-
        </div>
 
-       <div id="form">
-        <h1>Contact Us</h1>
-        
-            <form>
-                <label for="name">Name:</label>
-                <input type="text" id="name" placeholder="Enter your Name">
-                <small class="error"></small>
+       <div id="contact">
+            <h1 class="h1">Contact Us</h1>
 
-                <label for="email">Email:</label>
-                <input type="text" id="email" placeholder="Enter your Email">
-                <small class="error"></small>
+            <div class="formMap">
+                <form name="contactForm" id="contactForm" method="POST" onsubmit="event.preventDefault(); validateForm()">
 
-                <label for="name">Name:</label>
-                <textarea id="message" placeholder="Enter your Message" rows="6"></textarea>
-                <small class="error"></small>
+                    <label for="name">Name:</label>
+                    <input name="fullname" type="text" id="fullname" placeholder="Enter your Name">
+                    <small class="error"></small>
 
-                <input type="submit" value="Send">
-            </form>
+                    <label for="email">Email:</label>
+                    <input name="email" type="text" id="email" placeholder="Enter your Email">
+                    <small class="error"></small>
 
-            <section id="map"></section>
-       </div>
+                    <label for="message">Message:</label>
+                    <textarea  name="message" id="message" placeholder="Enter your Message" rows="6"></textarea>
+                    <small class="error"></small>
+
+                    <input type="submit" value="Send" class="submitButton">
+                    <p id="success"></p>
+
+                </form>
+                <div id="map">
+                </div>
+            </div>
+        </div>
+
     </main>
 
     <section class="floatFooter">
@@ -99,5 +107,13 @@
         </div>
     </footer>
 
+    <script src="form.js"></script>
+
+    <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBnsaoKcw-f0WreNXTnJgS3ZFKpEalDzyc&callback=initMap&v=weekly"
+    defer>
+    </script>
+
 </body>
 </html>
+
