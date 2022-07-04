@@ -57,21 +57,6 @@ select {
   font: inherit;
 }
 
-/* Remove all animations and transitions for people that prefer not to see them 
-@media (prefers-reduced-motion: reduce) {
-  html:focus-within {
-   scroll-behavior: auto;
-  }
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-}*/
-
 /*#endregion cssreset*/
 
 #app {
@@ -188,14 +173,80 @@ body{
 
   /*---------------------------------------------------DIV FORM-------------------------------------------------*/
 
-  #form{
-    display: flex;
-    width: 100%;
-    height: 100%;
+  #contact{
     background-color: #08121C;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
+  .h1{
+    color: white;
+    padding: 30px;
+  }
 
+  .formMap{
+    padding: 20px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  form{
+    width: 100%;
+    background: white;
+    border-radius: 3px;
+    padding: 20px;
+  }
+
+  #map {
+    width: 100%;
+    height: 550px;
+    border-radius: 3px;
+  }
+
+  label{
+    display: block;
+    margin: 20px;
+  }
+
+  input, textarea{
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    outline: none;
+    resize: none;
+    border: none;
+    border-bottom: 1px solid #d3d3d3;
+  }
+
+  input[type="text"]:focus, textarea:focus{
+    border-bottom: 1px solid #D0B58A;
+  }
+
+  textarea::-webkit-scrollbar{
+    width: 4px;
+  }
+
+  textarea::-webkit-scrollbar-thumb{
+    background-color: #D0B58A;
+  }
+
+  .error{
+    color: red;
+  }
+
+  .error-border{
+    border-bottom: 1px solid red;
+  }
+
+  #success{
+    color: #D0B58A;
+  }
+  
 /*#endregion main--------------------------------------------------------------------------------------------------*/
 
 /*#region Footer--------------------------------------------------------------------------------------------------*/
@@ -306,6 +357,10 @@ font-size: 40px;
       flex-direction: column;
     }
 
+    .formMap{
+      flex-direction: row;
+      max-width: 1200px;
+    }
 
     /*----------------------------------FOOTER----------------------------------*/
     .floatFooter{
