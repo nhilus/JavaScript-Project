@@ -5,8 +5,21 @@ const productCardContainer = document.querySelector("[data-products-card-contain
 const searchInput = document.querySelector("[data-search]");
 const url = ('https://fakestoreapi.com/products/category/electronics?limit=10');
 let products = [];
+let allbuttons = [];
+
+
+
 const ratingHtml = Rating.render();
 
+console.log(allbuttons)
+//cart variables
+let shoppingCart = [];
+let Item = function(id,title, price, count) {
+    this.id = id;
+    this.name = title;
+    this.price = price;
+    this.count = count;
+};
 
 // turn into api component
 
@@ -21,7 +34,7 @@ async function getData(){
 
 console.log(products);
 
-    //search bar filter function
+//search bar filter function
 
 searchInput.addEventListener("input", (e)=>{ 
     const value = e.target.value.toLowerCase();
@@ -34,35 +47,56 @@ searchInput.addEventListener("input", (e)=>{
 
 // turn into card compopnent
 
-    function renderProducts() {
-        const productcards = JSON.parse(localStorage.getItem("productDetails"));
-    
-        productcards.forEach(product => {
+function renderProducts() {
+    const productcards = JSON.parse(localStorage.getItem("productDetails"));
 
-        const card = productCardTemplate.content.cloneNode(true).children[0];
-        const image = card.querySelector("[data-image]");
-        const body = card.querySelector("[data-body]");
-        const rating = card.querySelector("[data-rating]");
+    productcards.forEach(product => {
 
-        let productImage = new Image(150, 200);
-        productImage.src = product.image;
-        image.appendChild(productImage);
+    const card = productCardTemplate.content.cloneNode(true).children[0];
+    const image = card.querySelector("[data-image]");
+    const body = card.querySelector("[data-body]");
+    const rating = card.querySelector("[data-rating]");
 
-        body.textContent = [product.title,
-                            product.price
-                            ]
-        rating.insertAdjacentHTML("beforebegin", ratingHtml);                
-        productCardContainer.append(card);
+    let productImage = new Image();
+    productImage.src = product.image;
+    image.appendChild(productImage);
 
-        return {title: product.title, 
-                image: product.image, 
-                price: product.price,
-                element: card}
-        });
-    };
+    body.textContent = [product.title,
+                        product.price
+                        ]
+    rating.insertAdjacentHTML("beforebegin", ratingHtml);                
+    productCardContainer.append(card);
+
+    return {title: product.title, 
+            image: product.image, 
+            price: product.price,
+            element: card}
+    });
+};
 
 //anonymous function immediately-invoked
-    (async () =>{
-        await getData();
-        renderProducts();
-    })()
+(async () =>{
+    await getData();
+    renderProducts();
+})();
+
+// Adding Items to Cart
+function addItemToCart(id,title, price, count){
+    for (let key in shoppingCart) {
+        if (shoppingCart[key].id === id) {
+            shoppingCart[key].count += count;
+        
+            return;
+        }
+    }
+
+let item = new Item(id, title, price, count);
+cart.push(item);
+}
+
+
+const buttons = document.querySelectorAll("button");
+buttons.forEach((button) => {
+    console.log(button)
+})
+console.log(allbuttons)
