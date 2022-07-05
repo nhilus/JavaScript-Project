@@ -17,7 +17,7 @@ const Rating ={
     }
 }
 
-export default Rating;
+export {Rating};
 
 
 

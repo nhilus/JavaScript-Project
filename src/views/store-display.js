@@ -1,25 +1,14 @@
-import Rating from "../components/rating";
+import {Rating} from "../components/rating";
+import {button} from "../components/add-to-cart-button";
 
 const productCardTemplate = document.querySelector("[data-product-template");
 const productCardContainer = document.querySelector("[data-products-card-container]");
 const searchInput = document.querySelector("[data-search]");
 const url = ('https://fakestoreapi.com/products/category/electronics?limit=10');
 let products = [];
-let allbuttons = [];
-
-
-
 const ratingHtml = Rating.render();
+const buttonHtml = button.render();
 
-console.log(allbuttons)
-//cart variables
-let shoppingCart = [];
-let Item = function(id,title, price, count) {
-    this.id = id;
-    this.name = title;
-    this.price = price;
-    this.count = count;
-};
 
 // turn into api component
 
@@ -56,6 +45,7 @@ function renderProducts() {
     const image = card.querySelector("[data-image]");
     const body = card.querySelector("[data-body]");
     const rating = card.querySelector("[data-rating]");
+    const button = card.querySelector("[data-button]");
 
     let productImage = new Image();
     productImage.src = product.image;
@@ -64,7 +54,8 @@ function renderProducts() {
     body.textContent = [product.title,
                         product.price
                         ]
-    rating.insertAdjacentHTML("beforebegin", ratingHtml);                
+    rating.insertAdjacentHTML("beforebegin", ratingHtml);
+    button.insertAdjacentHTML("beforebegin", buttonHtml);                 
     productCardContainer.append(card);
 
     return {title: product.title, 
@@ -79,24 +70,3 @@ function renderProducts() {
     await getData();
     renderProducts();
 })();
-
-// Adding Items to Cart
-function addItemToCart(id,title, price, count){
-    for (let key in shoppingCart) {
-        if (shoppingCart[key].id === id) {
-            shoppingCart[key].count += count;
-        
-            return;
-        }
-    }
-
-let item = new Item(id, title, price, count);
-cart.push(item);
-}
-
-
-const buttons = document.querySelectorAll("button");
-buttons.forEach((button) => {
-    console.log(button)
-})
-console.log(allbuttons)

@@ -1,17 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
-    <title>Index</title>
-  </head>
-  <body>
-    <nav>
-      <button>hi</button>  
-    </nav>
-    <script type="module" src="/main.js"></script>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/src/css/shop.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>ShoppingCart</title>
+</head>
+<body>
+    <div class="grid-container">
+        <header>
+            <div class="brand">
+                <a href="/#/">Shop</a>
+            </div>
+            <div>
+                <a href="/#/">icon1</a>
+                <a href="/#/">icon2</a>
+            </div>
+            
+        </header>
+        <div class="search-wrapper">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="search" id="search" data-search>
+            <button>Go to Shopping Cart</button>
+        </div>
+        <div class="product-cards" data-products-card-container></div>
+        <template class ="card-template" data-product-template>
+            <div class = "card">
+                <div class = "image" data-image></div>
+                <div class = "body" data-body></div>
+                <div class = "rating" id="rating" data-rating></div>
+                <div class = "button" data-button>
+                </div>
+            </div>
+        </template>
+        <footer>
+            <div>name 1</div>
+            <div>name 2</div>
+            <div>name 3</div>
+        </footer>
+    </div>
+
+    <script type="module" src="/src/views/store-display.js"></script>
+</body>
 </html>
