@@ -80,7 +80,8 @@ body{
 
 /*#region Navbar--------------------------------------------------------------------------------------------------*/
 .navbar{
-  background-color:#08121C;
+  /* background-color:#08121C; */
+  background: linear-gradient(to right, #E9CD9E,#BBA176,#4D617A,#1F3947, #08121C);
   grid-area: navbar;
   display: flex;
   justify-content: center;
@@ -171,7 +172,7 @@ body{
     }
   }
 
-  /*---------------------------------------------------DIV FORM-------------------------------------------------*/
+  /*---------------------------------------------------DIV CONTACT-------------------------------------------------*/
 
   #contact{
     background-color: #08121C;
@@ -186,7 +187,7 @@ body{
   }
 
   .formMap{
-    padding: 20px;
+    padding: 60px;
     display: flex;
     gap: 10px;
     align-items: center;
@@ -224,7 +225,7 @@ body{
   }
 
   input[type="text"]:focus, textarea:focus{
-    border-bottom: 1px solid #D0B58A;
+    border-bottom: 2px solid #D0B58A;
   }
 
   textarea::-webkit-scrollbar{
@@ -246,7 +247,54 @@ body{
   #success{
     color: #D0B58A;
   }
-  
+
+  /*---------------------------------------------------DIV SUPPORT-----------------------------------------------*/
+
+    .support{
+      background-image: url("/src/imgs/support-img.jpg");
+      background-size: cover;
+      height: 100vh;
+    }
+
+    .support h2{
+      color: white;
+      padding: 50px;
+      text-align: center;
+    }
+
+    .supportCards{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      width: 100%;
+      gap: 50px;
+    }
+
+    .card{
+      display: flex;
+      flex-direction: column;
+      padding: 10px;
+      border-radius: 10px;
+      max-width: 80%;
+      background:rgba(255, 255, 255, 0.411);
+      
+    }
+    
+    .cardTop{
+      border-radius: 10px;
+      background: linear-gradient(to right, #E9CD9E,#BBA176,#4D617A,#1F3947, #08121C);
+    }
+
+    .cardTop img{
+      border-radius: 50%;
+      border: 5px solid white;
+      margin: 6px;
+    }
+
+    .cardTop h3{
+      margin: 10px;
+    }
 /*#endregion main--------------------------------------------------------------------------------------------------*/
 
 /*#region Footer--------------------------------------------------------------------------------------------------*/
@@ -279,7 +327,8 @@ font-size: 40px;
 .footer{
   position: sticky;
   text-align: center;
-  background-color: #08121C;
+  background: linear-gradient(to right, #E9CD9E,#BBA176,#4D617A,#1F3947, #08121C);
+  /* background-color: #08121C; */
   color: aliceblue;
   padding: 20px;
   grid-area: footer;
@@ -360,6 +409,23 @@ font-size: 40px;
     .formMap{
       flex-direction: row;
       max-width: 1200px;
+    }
+
+     /*---------------------------------------------------DIV SUPPORT-----------------------------------------------*/
+
+
+    .supportCards{
+      display: flex;
+      width: 100%;
+      flex-direction: row;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .card{
+      margin: 70px;
+      width: 550px;
+      height: 550px;
     }
 
     /*----------------------------------FOOTER----------------------------------*/

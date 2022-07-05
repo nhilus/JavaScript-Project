@@ -1,5 +1,5 @@
 
-//Get data____________________________________________________________________________
+//GET DATA____________________________________________________________________________
 const nameInput  = document.querySelector("#fullname");
 const email      = document.querySelector("#email");
 const message    = document.querySelector("#message");
@@ -7,7 +7,7 @@ const success    = document.querySelector("#success");
 const errorNodes = document.querySelectorAll(".error");
 
 
-//Validar data________________________________________________________________________
+//VALIDATE DATA________________________________________________________________________
 function validateForm(){
 
     clearMessages();
@@ -36,7 +36,7 @@ function validateForm(){
     }
 }
 
-// Limpar erro / Mensagem de sucesso__________________________________________________
+// CLEAN ERROR / SUCCESS MESSAGE_____________________________________________________
 
 function clearMessages(){
     for(let i = 0; i < errorNodes.length; i++){
@@ -49,7 +49,7 @@ function clearMessages(){
 }
 
 
-//Checkar se email é válido___________________________________________________________
+//CHECK IF EMAIL IS VALID___________________________________________________________
 
 function emailIsValid(email){
     let pattern = /\S+@\S+\.\S+/;
@@ -57,7 +57,7 @@ function emailIsValid(email){
 }
 
 
-// POST Form data Fetch API___________________________________________________________
+// POST FORMDATA FETCH API___________________________________________________________
 
 const form = document.getElementById('contactForm');
  
@@ -74,22 +74,65 @@ form.addEventListener('submit', function(e) {
     headers:myHeaders,
     body: JSON.stringify(Object.fromEntries(payload)),
     })
-    .then(res => res.json())
+    .then(res => {
+        return res.json();
+      }) 
+      .then(data=>{
+        alert(data.message);
+      })
     .then(data => console.log(data))
 })
-//__________________________________________________________________________________
 
-// MAP______________________________________________________________________________
+
+// GOOGLE MAPS API__________________________________________________________________
 
 let map;
 
  function initMap() {
    map = new google.maps.Map(document.getElementById("map"), {
      center: { lat: 41.22062, lng: -8.68652 },
-     zoom: 8,
+     zoom: 18,
    });
  }
 
  window.initMap = initMap;
 
- //_________________________________________________________________________________
+
+ //FETCH FROM RANDOM USER API_______________________________________________________
+
+async function getRandomUser(){
+    const users = await fetch("https://randomuser.me/api/?results=2")
+    .then((response) => response.json())
+    .then((data) => {
+      return data;
+    });
+
+    let json = JSON.stringify(users.results);
+    window.localStorage.setItem("users",json);
+}
+
+async function checkLocalStorageAndDisplay(){
+    let userList = window.localStorage.getItem('users');
+    if(userList==null){
+        await getRandomUser();
+        userList = window.localStorage.getItem('users');
+    }
+
+    userList=JSON.parse(userList);
+
+    for(let i=0 ; i < userList.length; i++){
+        displayUser(userList[i],i);
+    }    
+}
+
+function displayUser(user, idx){
+    const image = document.getElementById('userImg'+(idx+1));
+    const name  = document.getElementById('userName'+(idx+1));
+    const email = document.getElementById('usereEmail'+(idx+1));
+
+    image.setAttribute('src', `${user.picture.large}`);
+    name.innerText = `${user.name.title} ${user.name.first} ${user.name.last}`;
+    email.innerText = `${user.email}`;
+}
+
+checkLocalStorageAndDisplay();
