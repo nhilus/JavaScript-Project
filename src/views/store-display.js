@@ -12,13 +12,14 @@ const buttonHtml = button.render();
 
 // turn into api component
 
+
 async function getData(){
     const response = await fetch(url);
     const data =  await response.json();
     data.forEach(product => {
         products.push(product);
     })
-        localStorage.setItem("productDetails", JSON.stringify(products));
+    localStorage.setItem("productDetails", JSON.stringify(products));
 };
 
 console.log(products);
@@ -66,7 +67,63 @@ function renderProducts() {
 };
 
 //anonymous function immediately-invoked
+
 (async () =>{
     await getData();
     renderProducts();
-})();
+})()
+
+/*
+function renderProducts() {
+    const productcards = JSON.parse(localStorage.getItem("productDetails"));
+    productcards.forEach((product) => {
+        `<div class="products">
+                <div>
+                    <div class="product">
+                        <a href="/#/product/${product.id}" style="width:100%; text-align:center">
+                            <img src="${product.image}" alt="${product.title}"/>
+                        </a>
+                        <div class="card-text-container">
+                            <div class="product-title">
+                                <a href="/#/product/">
+                                    ${product.title}
+                                </a>
+                            </div>
+                            <div class="product-price">
+                                ${product.price}€
+                            </div>
+                            <div class="components-container">
+                                ${ratingHtml}
+                                <div class="add-to-cart-btn" onclick="addToCart(${product.id})">
+                                    <button class="btn btn-primary">Add to cart</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            ).join('\n')}
+        </div>
+        `;
+})};
+/*
+(async () =>{
+    await getData();
+    renderProducts();
+})()
+
+renderProducts();
+
+
+
+function addToCart(id) {
+    if(cart.some((item) => item.id === id)) {
+        alert('Product already added to cart');
+} else {
+    const item = cart.find((product) => product.id === id);
+    cart.push({
+        ...item,
+        numberOfUnits : 1
+    });
+}
+
+};*/

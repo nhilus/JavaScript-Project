@@ -1,20 +1,12 @@
 
-
+/*
 let productList = [];
 
 window.addEventListener("DOMContentLoaded", () => {
   let sendToCart;
-  let url = window.location.search;
-  const urlParams = new URLSearchParams(url);
-  const id = urlParams.get("id");
 
-  apiCall(id)
-    .then((response) => {
-      return response;
-    })
-    .then((object) => {
       sendToCart = document.querySelector("button");
-      /**********add to cart ***********/
+
       sendToCart.addEventListener("click", function () {
         let newProduct = new product(
           object.image,
@@ -64,23 +56,11 @@ window.addEventListener("DOMContentLoaded", () => {
           }
         }
       });
-    })
-    .catch((error) => {
-      console.error(error);
     });
-});
-
-async function apiCall(element) {
-  const api = await fetch(
-    "https://fakestoreapi.com/products/category/electronics?limit=10" + element
-  );
-  const response = api.json();
-  return response;
-}
-
-
-
+*/
 /*********** Article constructor *********/
+
+/*
 class product {
     constructor(id, title, price, quantity, rating) {
         (this.id = id),
@@ -98,20 +78,23 @@ class product {
   }
 
 
+function addToCart(id) {
 
-  let button ={
-    render:() =>{
-        return `
-        <div>
-            <button class="button" data-button>Add to cart</button>
-        </div>
-        `
-    }
+
+  if(cart.some((item) => item.id === id)) {
+      alert('Product already added to cart');
+} else {
+  const item = cart.find((product) => product.id === id);
+  cart.push({
+      ...item,
+      numberOfUnits : 1
+  });
 }
+localStorage.setItem("shoppingCart", JSON.stringify(cart));
+};
 
-
+*/
 
 
   
-export {apiCall, button};
-  
+export {button};
