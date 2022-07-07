@@ -71,7 +71,7 @@ select {
 /*#region Mobile--------------------------------------------------------------------------------------------------*/
 
 body{
-  font-family: 'Oswald', sans-serif;
+  font-family: 'Nunito', sans-serif;
   grid-template-areas: 
     "navbar"
     "main"
@@ -93,22 +93,25 @@ body{
 
 .iconsNav1{
   display: none;
-  color: aliceblue;
+  color: white;
   font-size: 20px;
 }
 
 
 .logoNav a{
   display: flex;
-  color: aliceblue;
+  text-align: center;
+  color: white;
   font-size: 25px;
-  text-shadow: 0 0 20px #D0B58A;
+  text-shadow: 0 0 15px #D0B58A;
+  font-family: 'Wallpoet', cursive;
+  margin-top: 5%;
 }
 
 
 .iconsNav2{
   display: none;
-  color: aliceblue;
+  color: white;
 }
 
 
@@ -214,6 +217,9 @@ body{
     margin: 20px;
   }
 
+  .submitButton{
+    border-radius: 5px;
+  }
   input, textarea{
     width: 100%;
     padding: 10px;
@@ -253,10 +259,9 @@ body{
     .support{
       background-image: url("/src/imgs/support-img.jpg");
       background-size: cover;
-      height: 100vh;
     }
 
-    .support h2{
+    .support h1{
       color: white;
       padding: 50px;
       text-align: center;
@@ -269,6 +274,7 @@ body{
       text-align: center;
       width: 100%;
       gap: 50px;
+      padding-bottom: 110px;
     }
 
     .card{
@@ -277,7 +283,7 @@ body{
       padding: 10px;
       border-radius: 10px;
       max-width: 80%;
-      background:rgba(255, 255, 255, 0.411);
+      background:rgba(255, 255, 255, 0.637);
       
     }
     
@@ -294,6 +300,15 @@ body{
 
     .cardTop h3{
       margin: 10px;
+      color: white;
+    }
+
+    .cardInfo h4{
+      margin: 20px;
+    }
+
+    .cardInfo p{
+      margin: 20px;
     }
 /*#endregion main--------------------------------------------------------------------------------------------------*/
 
@@ -335,6 +350,7 @@ font-size: 40px;
 }
 
 .logoFooter{
+  font-family: 'Wallpoet', cursive;
   display: none;
 }
 /*#endregion Footer--------------------------------------------------------------------------------------------------*/
@@ -372,24 +388,27 @@ font-size: 40px;
     .navbar{
       display: flex;
       justify-content: space-between;
-      align-items: center;
     }
 
     .iconsNav1{
       display: flex;
       color: aliceblue;
-      font-size: 30px;
+      font-size: 25px;
     }
 
     .iconsNav1 a{
       color: aliceblue;
+    }
+
+    .logoNav a{
+      margin-top: 0;
     }
     
     .iconsNav2{
       display: flex;
       color: aliceblue;
       margin: 30px;
-      font-size: 30px;
+      font-size: 25px;
     }
 
     .iconsNav2 a{
@@ -420,6 +439,7 @@ font-size: 40px;
       flex-direction: row;
       justify-content: center;
       gap: 10px;
+      padding-bottom: 0;
     }
 
     .card{
@@ -446,7 +466,7 @@ font-size: 40px;
 
     .logoFooter a{
       color: aliceblue;
-      text-shadow: 0 0 20px #D0B58A;
+      text-shadow: 0 0 3px #4D617A, 0 0 6px #1F3947;
     }
 
     .namesFooter{
@@ -456,3 +476,17 @@ font-size: 40px;
     }
   }
 /*#endregion Desktop--------------------------------------------------------------------------------------------------*/
+
+/* .popupAlert{
+  width: 400px;
+  background-color: #fff;
+  border-radius: 6px;
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.1);
+  text-align: center;
+  padding: 0 30px 30px;
+  color: #333;
+  visibility: hidden;
+} */
