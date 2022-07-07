@@ -105,6 +105,7 @@ body{
   font-size: 25px;
   text-shadow: 0 0 15px #D0B58A;
   font-family: 'Wallpoet', cursive;
+  margin-top: 5%;
 }
 
 
@@ -398,6 +399,10 @@ font-size: 40px;
     .iconsNav1 a{
       color: aliceblue;
     }
+
+    .logoNav a{
+      margin-top: 0;
+    }
     
     .iconsNav2{
       display: flex;
@@ -471,3 +476,17 @@ font-size: 40px;
     }
   }
 /*#endregion Desktop--------------------------------------------------------------------------------------------------*/
+
+/* .popupAlert{
+  width: 400px;
+  background-color: #fff;
+  border-radius: 6px;
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.1);
+  text-align: center;
+  padding: 0 30px 30px;
+  color: #333;
+  visibility: hidden;
+} */
