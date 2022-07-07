@@ -24,10 +24,9 @@ function renderProducts() {
     productcards.forEach((product) => {
         productsEl.innerHTML +=
         `<div class="products">
-                <div>
                     <div class="product">
                         <a href="/#/product/${product.id}" style="width:100%; text-align:center">
-                            <img src="${product.image}" alt="${product.title}"/>
+                            <img id="image" src="${product.image}" alt="${product.title}"/>
                         </a>
                         <div class="card-text-container">
                             <div class="product-title">
@@ -41,12 +40,11 @@ function renderProducts() {
                             <div class="components-container">
                                 ${ratingHtml}
                                 <div class="add-to-cart-btn" id="add-to-cart">
-                                    <button class="btn btn-primary">Add to cart</button>
+                                    <button class="btn btn-primary" id="btn">Add to cart</button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
             </div>
         `
 })};
@@ -73,9 +71,9 @@ let storage = localAdapter;
 let helpers = {
     itemData: function (object) {
         let item = {
-            title: object.getAttribute(object.title),
-            price: object.getAttribute(object.price),
-            id: object.getAttribute(object.id),
+            id: object.id,
+            title: object.title,
+            price: object.price,
         };
         return item;
     },
@@ -121,9 +119,11 @@ let cart = {
 };
 
 document.addEventListener('DOMContentLoaded', function () {
-    let products = document.querySelectorAll('button');
-    [].forEach.call(products, function (product) {
-        product.addEventListener('click', function (e) {
+    let cards = document.querySelectorAll('button');
+    console.log(cards),
+
+     [].forEach.call(cards, function (product) {
+         product.addEventListener('click', function (e) {
             let item = helpers.itemData(product);
             cart.addItem(item);
         });
