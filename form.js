@@ -132,7 +132,7 @@ function displayUser(user, idx){
 
     image.setAttribute('src', `${user.picture.large}`);
     name.innerText = `${user.name.title} ${user.name.first} ${user.name.last}`;
-    email.innerText = `${user.email}`;
+    email.innerText = `My Email: ${user.email}`;
 }
 
 checkLocalStorageAndDisplay();
