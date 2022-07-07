@@ -40,7 +40,7 @@ function renderProducts() {
                             <div class="components-container">
                                 ${ratingHtml}
                                 <div class="add-to-cart-btn" id="add-to-cart">
-                                    <button class="btn btn-primary" id="btn">Add to cart</button>
+                                    <button class="btn btn-primary" id="(${product.id})">Add to cart</button>
                                 </div>
                             </div>
                         </div>
@@ -66,7 +66,6 @@ let localAdapter = {
     },
 };
 
-
 let storage = localAdapter;
 let helpers = {
     itemData: function (object) {
@@ -80,20 +79,8 @@ let helpers = {
 };
 
 
-
-
 let cart = {
     items: [],
-    getItems: function () {
-        return this.items;
-    },
-    setItems: function (items) {
-        this.items = items;
-        for (let i = 0; i < this.items.length; i++) {
-            let _item = this.items[i];
-            this.total += _item.total;
-        }
-    },
     addItem: function (item) {
         if (this.containsItem(item.id) === false) {
             this.items.push({
@@ -104,28 +91,26 @@ let cart = {
             storage.saveCart(this.items);
         }
     },
-    containsItem: function (id) {
-        if (this.items === undefined) {
-            return false;
-        }
-        for (let i = 0; i < this.items.length; i++) {
-            let _item = this.items[i];
-            if (id == _item.id) {
-                return true;
-            }
-        }
-        return false;
-    },
 };
 
 document.addEventListener('DOMContentLoaded', function () {
-    let cards = document.querySelectorAll('button');
-    console.log(cards),
-
-     [].forEach.call(cards, function (product) {
-         product.addEventListener('click', function (e) {
-            let item = helpers.itemData(product);
-            cart.addItem(item);
+    let buttons = document.getElementsByClassName('add-to-cart-btn');
+    console.log(buttons);
+    for(let i = 0; i < buttons.length; i++) {
+        let button = buttons[i];
+        console.log(button);
+        button.addEventListener('onclick', function (event) {  
+            let product = event.target.id;
+            console.log(product);
+            
+         // 'this' refers to the current button on for loop
         });
-    });
-});
+    }});
+    
+    //  [].forEach.call(cards, function (product) {
+    //      product.addEventListener('click', function (e) {
+    //         let item = helpers.itemData(product);
+    //         cart.addItem(item);
+    //     });
+    // });
+
