@@ -58,21 +58,74 @@ function renderProducts() {
 renderProducts();
 
 
-let cart = [];
 
-function addToCart(id) {
+let cartId = "cart";
+let localAdapter = {
+    saveCart: function (object) {
+        let stringified = JSON.stringify(object);
+        localStorage.setItem(cartId, stringified);
+        return true;
+    },
+};
 
-    if(cart.some((item) => item.id === id)) {
-        alert("Product already added to cart");
-    } else {
-        const item = cart.find((product) => product.id === id);
-        cart.push({
-            ...item,
-            numberOfUnits : 1
+
+let storage = localAdapter;
+let helpers = {
+    itemData: function (object) {
+        let item = {
+            title: object.getAttribute(object.title),
+            price: object.getAttribute(object.price),
+            id: object.getAttribute(object.id),
+        };
+        return item;
+    },
+};
+
+
+
+
+let cart = {
+    items: [],
+    getItems: function () {
+        return this.items;
+    },
+    setItems: function (items) {
+        this.items = items;
+        for (let i = 0; i < this.items.length; i++) {
+            let _item = this.items[i];
+            this.total += _item.total;
+        }
+    },
+    addItem: function (item) {
+        if (this.containsItem(item.id) === false) {
+            this.items.push({
+                id: item.id,
+                title: item.title,
+                price: item.price,
+            });
+            storage.saveCart(this.items);
+        }
+    },
+    containsItem: function (id) {
+        if (this.items === undefined) {
+            return false;
+        }
+        for (let i = 0; i < this.items.length; i++) {
+            let _item = this.items[i];
+            if (id == _item.id) {
+                return true;
+            }
+        }
+        return false;
+    },
+};
+
+document.addEventListener('DOMContentLoaded', function () {
+    let products = document.querySelectorAll('button');
+    [].forEach.call(products, function (product) {
+        product.addEventListener('click', function (e) {
+            let item = helpers.itemData(product);
+            cart.addItem(item);
+        });
     });
-    }
-    console.log(cart);
-    localStorage.setItem("shoppingCart", JSON.stringify(cart));
-}
-
-document.getElementById ("add-to-cart").addEventListener ("onclick", addToCart());
+});

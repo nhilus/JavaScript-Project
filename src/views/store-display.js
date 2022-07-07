@@ -1,3 +1,5 @@
+/*
+
 import {Rating} from "../components/rating";
 import {button} from "../components/add-to-cart-button";
 
@@ -112,18 +114,5 @@ function renderProducts() {
 })()
 
 renderProducts();
-
-
-
-function addToCart(id) {
-    if(cart.some((item) => item.id === id)) {
-        alert('Product already added to cart');
-} else {
-    const item = cart.find((product) => product.id === id);
-    cart.push({
-        ...item,
-        numberOfUnits : 1
-    });
-}
 
 };*/
