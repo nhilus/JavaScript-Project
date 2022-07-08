@@ -1,12 +1,19 @@
 
 import { Rating } from "../components/rating";
 
-
 const productsEl = document.querySelector(".products");
 const url = ('https://fakestoreapi.com/products/category/electronics?limit=10');
 let products = [];
 const ratingHtml = Rating.render();
-
+let cartId = "cart";
+let cart = [];
+let cartFunctions = {
+    saveCart: function (object) {
+        let stringified = JSON.stringify(object);
+        localStorage.setItem(cartId, stringified);
+        return true;
+    },
+};
 
 async function getData(){
     const response = await fetch(url);
@@ -23,7 +30,7 @@ function renderProducts() {
     const productcards = JSON.parse(localStorage.getItem("productDetails"));
     productcards.forEach((product) => {
         productsEl.innerHTML +=
-        `   <div class="products" id="productCards">
+        `   <div class="products-cards" id="productCards">
                 <div class="product" id="productCard">
                     <a href="/#/product/${product.id}" style="width:100%; text-align:center">
                         <img id="image" src="${product.image}" alt="${product.title}"/>
@@ -70,19 +77,6 @@ searchInput.addEventListener("input", (e)=>{
     });
 });
 
-
-let cartId = "cart";
-let cartFunctions = {
-    saveCart: function (object) {
-        let stringified = JSON.stringify(object);
-        localStorage.setItem(cartId, stringified);
-        return true;
-    },
-};
-
-
-let cart = [];
-
 document.addEventListener('DOMContentLoaded', function () {
     let buttons = document.getElementsByClassName('addtocart');
     let productlist = JSON.parse(localStorage.getItem("productDetails"));
@@ -96,12 +90,12 @@ document.addEventListener('DOMContentLoaded', function () {
             for(let j = 0; j < productlist.length; j++) {
             if(button.id === productlist[j].id) {
                 cart.push(productlist[j]);
+                cartFunctions.saveCart(productlist[j]);
                 console.log(cart)
             }}});
         }
     });
   
-    
     //  [].forEach.call(cards, function (product) {
     //      product.addEventListener('click', function (e) {
     //         let item = helpers.itemData(product);
