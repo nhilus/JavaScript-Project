@@ -13,19 +13,29 @@ body{
     flex-direction: column;
     background-color: #08121C;
     padding: 50px;
-    text-align: center;
-    gap: 100px;
+    gap: 40px;
 }
 
 .info{
     display: flex;
     flex-direction: column;
+    background-color: #4D617A;
     gap: 10px;
+    padding: 50px;
     color: white;
+    border-radius: 5px;
+}
+
+#info3{
+    margin-bottom: 80px;
 }
 
 .infoImage{
     background-size: cover;
+}
+
+.infoImage img{
+    border-radius: 5px;
 }
 
 /*#endregion Mobile--------------------------------------------------------------------------------------------------*/
@@ -41,12 +51,16 @@ body{
       "footer footer footer footer";
     }
 
-    .aboutContainer{
-        flex-direction: row;
+
+
+    .infoImage img{
+        object-fit:cover;
+        width: 1800px;
+        height: 400px;
     }
 
-    .infoImage{
-        width: 100%;
+    #info3{
+        margin-bottom: 0;
     }
 }
 
