@@ -95,17 +95,20 @@ let cart = {
 
 document.addEventListener('DOMContentLoaded', function () {
     let buttons = document.getElementsByClassName('add-to-cart-btn');
-    console.log(buttons);
+    let productlist = JSON.parse(localStorage.getItem("productDetails"));
+    
+    console.log(productlist);
     for(let i = 0; i < buttons.length; i++) {
         let button = buttons[i];
         console.log(button);
-        button.addEventListener('onclick', function (event) {  
-            let product = event.target.id;
-            console.log(product);
-            
-         // 'this' refers to the current button on for loop
-        });
-    }});
+        button.addEventListener('click', function (event) {  
+            for(let j = 0; j < productlist.length; j++) {
+            if(button.id === productlist[j].id) {
+                console.log('hi')
+            }}});
+        }
+    });
+  
     
     //  [].forEach.call(cards, function (product) {
     //      product.addEventListener('click', function (e) {
