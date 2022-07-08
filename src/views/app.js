@@ -23,7 +23,7 @@ function renderProducts() {
     const productcards = JSON.parse(localStorage.getItem("productDetails"));
     productcards.forEach((product) => {
         productsEl.innerHTML +=
-        `<div class="products" id="productCards">
+        `   <div class="products" id="productCards">
                 <div class="product" id="productCard">
                     <a href="/#/product/${product.id}" style="width:100%; text-align:center">
                         <img id="image" src="${product.image}" alt="${product.title}"/>
@@ -60,16 +60,15 @@ const searchInput = document.querySelector("[data-search]");
 searchInput.addEventListener("input", (e)=>{ 
     const value = e.target.value.toLowerCase();
     console.log(value)
+    let searchedCard =  document.getElementById("productCards")
     products.forEach(product => {
-        const isVisible = product.name?.toLowerCase().includes(value);
+        const isVisible = product.title?.toLowerCase().includes(value);
+        console.log(product)
         if(!isVisible){
-            let searchedCard =  document.getElementById("productCards")
             searchedCard.style.display = "none";
-            console.log(searchedCard)
             }
     });
 });
-
 
 
 let cartId = "cart";
@@ -82,15 +81,13 @@ let cartFunctions = {
 };
 
 
-
-
 let cart = [];
 
 document.addEventListener('DOMContentLoaded', function () {
     let buttons = document.getElementsByClassName('addtocart');
     let productlist = JSON.parse(localStorage.getItem("productDetails"));
-    
     console.log(productlist);
+    
     for(let i = 0; i < buttons.length; i++) {
         let button = buttons[i];
         console.log(button);
@@ -99,7 +96,7 @@ document.addEventListener('DOMContentLoaded', function () {
             for(let j = 0; j < productlist.length; j++) {
             if(button.id === productlist[j].id) {
                 cart.push(productlist[j]);
-                console.log()
+                console.log(cart)
             }}});
         }
     });
